@@ -26,6 +26,7 @@
         h1 {
             margin-bottom: 20px;
             color: #2c3e50;
+            cursor: pointer; /* Make it look clickable */
         }
 
         form {
@@ -101,7 +102,7 @@
 </head>
 <body>
 
-<h1>Video Player</h1>
+<h1 onclick="window.open('https://dl.animesp.xyz/Completed/', '_blank')">Select Video</h1>
 <form id="videoForm">
     <label for="videoURL">Enter Video URL:</label>
     <input type="text" id="videoURL" placeholder="Enter video address here" required>
