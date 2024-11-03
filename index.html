@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        /* Reset some basic styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        video {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            margin-top: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none; /* Initially hide the video player */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            input[type="text"] {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Video Player</h1>
+<form id="videoForm">
+    <label for="videoURL">Enter Video URL:</label>
+    <input type="text" id="videoURL" placeholder="Enter video address here" required>
+    <button type="submit">Play Video</button>
+</form>
+
+<video id="videoPlayer" controls>
+    <source id="videoSource" src="" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<script>
+    document.getElementById('videoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const videoURL = document.getElementById('videoURL').value;
+        const videoSource = document.getElementById('videoSource');
+
+        videoSource.src = videoURL; // Set the video source to the entered URL
+        const videoPlayer = document.getElementById('videoPlayer');
+        videoPlayer.load(); // Load the new video
+        videoPlayer.style.display = 'block'; // Show the video player
+        videoPlayer.play(); // Optional: Automatically play the video
+    });
+</script>
+
+</body>
+</html>
